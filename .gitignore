@@ -2,3 +2,4 @@ venv/
 .env
 __pycache__/
 outputs/
+data/reviews_raw.csv
