@@ -2,5 +2,6 @@ pandas
 google-play-scraper
 python-dotenv
 groq
+httpx
 mcp
 streamlit
