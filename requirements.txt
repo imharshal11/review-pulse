@@ -3,5 +3,9 @@ google-play-scraper
 python-dotenv
 groq
 httpx
+beautifulsoup4
+pypdf
+rank-bm25
+truststore
 mcp
 streamlit
