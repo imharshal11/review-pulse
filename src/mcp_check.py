@@ -1,7 +1,7 @@
 """Connection test for the n8n MCP server.
 
 Connects with the MCP SDK (Streamable HTTP first, SSE as fallback), prints the
-tools the server exposes and verifies the two the pulse pipeline needs.
+tools the server exposes and verifies the exact set the publish pipeline needs.
 No tool is ever called and the token is never printed.
 
 Usage: python src/mcp_check.py
@@ -10,6 +10,8 @@ Usage: python src/mcp_check.py
 import asyncio
 import os
 import sys
+import traceback
+from datetime import datetime
 from pathlib import Path
 
 # Use the OS trust store so corporate/self-signed roots are accepted.
@@ -32,10 +34,14 @@ except ModuleNotFoundError:  # older mcp releases use plain httpx
 # ---------------------------------------------------------------------------
 # CONFIG
 # ---------------------------------------------------------------------------
-REQUIRED_TOOLS = ("append_to_doc", "create_email_draft")
+REQUIRED_TOOLS = ("append_to_doc", "create_email_draft", "read_doc")
 
-CONNECT_TIMEOUT = 20.0   # seconds allowed to open the HTTP connection
-READ_TIMEOUT = 60.0      # seconds allowed to hear back from n8n
+ROOT = Path(__file__).resolve().parent.parent
+ERROR_LOG = ROOT / "outputs" / "logs" / "publish_errors.log"
+
+CONNECT_TIMEOUT = 30.0    # seconds allowed to open the HTTP connection
+READ_TIMEOUT = 120.0      # seconds allowed to hear back from n8n
+RETRY_DELAYS = (5.0, 10.0, 20.0)   # waits between connection attempts
 
 # Set in main() so error text can be scrubbed; never printed.
 TOKEN = ""
@@ -65,6 +71,32 @@ def _clean(text):
     if TOKEN and TOKEN in text:
         return text.replace(TOKEN, "***")
     return text
+
+
+def _now_iso():
+    """Local time as ISO-8601, e.g. 2026-10-15T14:03:11+05:30."""
+    return datetime.now().astimezone().isoformat(timespec="seconds")
+
+
+def _unwrap_group(exc):
+    """Innermost exception inside a (nested) ExceptionGroup."""
+    while isinstance(exc, BaseExceptionGroup) and exc.exceptions:
+        exc = exc.exceptions[0]
+    return exc
+
+
+def _log_traceback(context=""):
+    """Append the full traceback to outputs/logs/publish_errors.log.
+
+    A log failure is swallowed: this must never break the run.
+    """
+    try:
+        ERROR_LOG.parent.mkdir(parents=True, exist_ok=True)
+        with open(ERROR_LOG, "a", encoding="utf-8") as fh:
+            fh.write(f"\n===== {_now_iso()} {context} =====\n")
+            traceback.print_exc(file=fh)
+    except OSError:
+        pass
 
 
 def _walk(exc):
@@ -114,6 +146,7 @@ def _is_connection_error(exc):
 
 
 def _friendly_reason(exc, statuses):
+    exc = _unwrap_group(exc)
     status = _http_status(exc, statuses)
     if status in (401, 403):
         return "Token mismatch between .env and n8n"
@@ -232,20 +265,37 @@ async def run_check(url, token):
 
     tools = None
     failures = []
+    attempts = 1 + len(RETRY_DELAYS)
     for name, runner in transports:
-        statuses = []
-        try:
-            tools = await runner(url, headers, statuses)
-        except Exception as exc:
-            reason = _friendly_reason(exc, statuses)
-            print(f"{name} transport failed: {reason}")
-            failures.append(reason)
-            if reason.startswith("Cannot reach"):
-                print("Skipping SSE fallback - the server is unreachable either way.")
-                break
-            continue
-        print(f"Connected via {name} transport.")
-        break
+        for attempt_no in range(attempts):
+            if attempt_no:
+                delay = RETRY_DELAYS[attempt_no - 1]
+                print(
+                    f"Retrying {name} in {delay:.0f}s "
+                    f"(attempt {attempt_no + 1} of {attempts})..."
+                )
+                await asyncio.sleep(delay)
+            statuses = []
+            try:
+                tools = await runner(url, headers, statuses)
+            except Exception as exc:
+                _log_traceback(f"mcp_check connect via {name}")
+                reason = _friendly_reason(exc, statuses)
+                print(f"{name} transport failed: {reason}")
+                failures.append(reason)
+                if (
+                    not _is_connection_error(exc)
+                    or attempt_no >= len(RETRY_DELAYS)
+                ):
+                    break  # not a network blip / retries exhausted
+                continue
+            print(f"Connected via {name} transport.")
+            break
+        if tools is not None:
+            break
+        if failures and failures[-1].startswith("Cannot reach"):
+            print("Skipping SSE fallback - the server is unreachable either way.")
+            break
 
     if tools is None:
         reason = min(failures, key=_reason_rank) if failures else "could not connect"

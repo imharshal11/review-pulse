@@ -2,7 +2,7 @@
 
 Reads ONLY outputs/insights.json (never the raw reviews) and writes a short,
 word-limited markdown pulse to outputs/weekly_pulse.md plus a machine-readable
-copy to outputs/pulse.json.
+copy (including a short email summary) to outputs/pulse.json.
 
 It reuses the call_llm helper (JSON mode + retry + cache) from
 analyze_reviews.py, so finished calls are never repeated.
@@ -37,6 +37,26 @@ TRAILING_PUNCT = ".,!?;:\u2026\"'\u201d\u2019)]}"
 
 # The big model needs a little room, but not much - this is a short document.
 PULSE_KWARGS = {"max_completion_tokens": 4000}
+
+# ---- Second LLM call: the short email summary (its own cache entry) ----
+EMAIL_SUMMARY_KWARGS = {"max_completion_tokens": 1000}
+EMAIL_SUMMARY_RETRIES = 3   # retries after the first attempt
+MAX_SUMMARY_LINE_WORDS = 12
+
+# Jargon / filler the email summary may never use.
+EMAIL_SUMMARY_BANNED = (
+    "leverage", "holistic", "seamless", "robust", "synergy", "eroding",
+    "undermine", "utilize", "streamline", "enhance", "optimize",
+    "ecosystem", "stakeholders",
+)
+
+# An action must open with an imperative verb, never with one of these.
+ACTION_NON_VERB_STARTERS = (
+    "the", "a", "an", "it", "we", "they", "you", "users", "this", "that",
+    "these", "those", "our", "your", "please", "also", "maybe", "just",
+    "when", "if", "and", "but", "or", "to", "of", "in", "for", "with",
+    "there", "here",
+)
 
 load_dotenv()
 GROQ_MODEL = os.getenv("GROQ_MODEL")
@@ -244,6 +264,158 @@ def tidy(raw):
 
 
 # ---------------------------------------------------------------------------
+# EMAIL SUMMARY (second LLM call, plain lines for the weekly email)
+# ---------------------------------------------------------------------------
+EMAIL_SUMMARY_SYSTEM = (
+    "You rewrite a product team's weekly notes as very short plain lines "
+    "for a small internal email. Every line must be plain everyday English "
+    "a 15-year-old understands: no numbers, no jargon, no filler. Always "
+    "answer with a single valid JSON object and nothing else."
+)
+
+
+def email_summary_prompt(top_themes, theme_insights, key_observation,
+                         action_ideas):
+    """The only information the email-summary call is allowed to see."""
+    notes = {
+        "top_themes": list(top_themes),
+        "theme_insights": list(theme_insights),
+        "key_observation": key_observation,
+        "action_ideas": list(action_ideas),
+    }
+    return (
+        "Here are this week's product notes (JSON):\n\n"
+        f"{json.dumps(notes, ensure_ascii=False, indent=2)}\n\n"
+        "Rewrite them for a short internal email. Return JSON with exactly "
+        "these fields:\n"
+        '{"theme_lines": ["<line for theme 1>", "<line for theme 2>", '
+        '"<line for theme 3>"], '
+        '"key_point": "<one line>", '
+        '"actions": ["<action 1>", "<action 2>", "<action 3>"]}\n'
+        "Rules:\n"
+        "- theme_lines: exactly 3 strings, one per theme, in the same order "
+        f"as top_themes; each at most {MAX_SUMMARY_LINE_WORDS} words.\n"
+        f"- key_point: exactly one line, at most {MAX_SUMMARY_LINE_WORDS} "
+        "words, restating the key observation.\n"
+        "- actions: exactly 3 strings, one per action idea, in the same "
+        f"order; each at most {MAX_SUMMARY_LINE_WORDS} words; each MUST "
+        "start with a verb.\n"
+        "- Plain everyday English a 15-year-old understands.\n"
+        "- No numbers of any kind (no counts, percentages, ratings or "
+        "dates).\n"
+        "- No jargon or filler words; never use any of: "
+        + ", ".join(EMAIL_SUMMARY_BANNED)
+        + ".\n"
+        "- Stay faithful to the notes; do not invent facts."
+    )
+
+
+def tidy_email_summary(raw):
+    """Coerce the model's JSON into the three email fields."""
+    def lines(value):
+        return [str(s).strip() for s in (value or [])[:3]]
+
+    return {
+        "theme_lines": lines(raw.get("theme_lines")),
+        "key_point": str(raw.get("key_point") or "").strip(),
+        "actions": lines(raw.get("actions")),
+    }
+
+
+def email_summary_problems(summary):
+    """Return human-readable problems (empty list = good enough to save)."""
+    problems = []
+
+    def check(label, text, action=False):
+        if not text:
+            problems.append(f"{label}: empty")
+            return
+        if any(ch.isdigit() for ch in text):
+            problems.append(f"{label}: must contain no numbers")
+        words = text.split()
+        if len(words) > MAX_SUMMARY_LINE_WORDS:
+            problems.append(
+                f"{label}: {len(words)} words (max {MAX_SUMMARY_LINE_WORDS})"
+            )
+        lowered = text.lower()
+        hits = [
+            w for w in EMAIL_SUMMARY_BANNED
+            if re.search(rf"\b{re.escape(w)}\b", lowered)
+        ]
+        if hits:
+            problems.append(f"{label}: banned words {hits}")
+        if action:
+            first = words[0].strip(".,!?;:").lower()
+            if not first.isalpha() or first in ACTION_NON_VERB_STARTERS:
+                problems.append(
+                    f"{label}: must start with a verb (got {words[0]!r})"
+                )
+
+    theme_lines = summary.get("theme_lines") or []
+    if len(theme_lines) != 3:
+        problems.append(f"theme_lines: need exactly 3, got {len(theme_lines)}")
+    for i, line in enumerate(theme_lines, 1):
+        check(f"theme_lines[{i}]", line)
+
+    check("key_point", summary.get("key_point") or "")
+
+    actions = summary.get("actions") or []
+    if len(actions) != 3:
+        problems.append(f"actions: need exactly 3, got {len(actions)}")
+    for i, line in enumerate(actions, 1):
+        check(f"actions[{i}]", line, action=True)
+
+    return problems
+
+
+def write_email_summary(theme_insights, key_observation, action_ideas,
+                        top_themes):
+    """The second LLM call (its own cache entry), retried up to 3 times.
+
+    Returns the tidy dict; if every retry still fails validation, the last
+    answer is kept and a WARNING is printed (nothing is silently dropped).
+    """
+    user = email_summary_prompt(
+        top_themes, theme_insights, key_observation, action_ideas
+    )
+    print("Writing the email summary...")
+    summary = tidy_email_summary(
+        call_llm(GROQ_MODEL, EMAIL_SUMMARY_SYSTEM, user,
+                 **EMAIL_SUMMARY_KWARGS)
+    )
+
+    # First attempt, then up to EMAIL_SUMMARY_RETRIES repairs.
+    for attempt in range(EMAIL_SUMMARY_RETRIES + 1):
+        problems = email_summary_problems(summary)
+        if not problems:
+            return summary
+        if attempt == EMAIL_SUMMARY_RETRIES:
+            print(
+                "  WARNING: email summary still failing validation after "
+                f"{EMAIL_SUMMARY_RETRIES} retries; saving the last answer "
+                "anyway:"
+            )
+            for problem in problems:
+                print(f"    - {problem}")
+            return summary
+        print(f"  email summary failed validation (attempt {attempt + 1}):")
+        for problem in problems:
+            print(f"    - {problem}")
+        repair = (
+            "\nYour previous answer had problems:\n- "
+            + "\n- ".join(problems)
+            + "\nReturn a corrected FULL JSON with the same three fields "
+            "that fixes every problem."
+        )
+        summary = tidy_email_summary(
+            call_llm(GROQ_MODEL, EMAIL_SUMMARY_SYSTEM, user + repair,
+                     **EMAIL_SUMMARY_KWARGS)
+        )
+
+    return summary  # unreachable; every loop path returns above
+
+
+# ---------------------------------------------------------------------------
 # MAIN
 # ---------------------------------------------------------------------------
 def main():
@@ -345,6 +517,14 @@ def main():
 
     assert words <= MAX_WORDS, f"pulse is {words} words (limit {MAX_WORDS})"
 
+    # ---- Email summary: a second LLM call (separate, fresh cache entry) ----
+    email_summary = write_email_summary(
+        written["theme_insights"],
+        written["key_observation"],
+        written["action_ideas"],
+        insights["top_themes"],
+    )
+
     # ---- Outputs ----
     with open(PULSE_MD, "w", encoding="utf-8") as fh:
         fh.write(markdown)
@@ -357,6 +537,7 @@ def main():
         "theme_insights": written["theme_insights"],
         "key_observation": written["key_observation"],
         "action_ideas": written["action_ideas"],
+        "email_summary": email_summary,
         "quotes": [
             {
                 "excerpt": excerpt,
