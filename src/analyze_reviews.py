@@ -1,7 +1,8 @@
 """Review Intelligence Layer.
 
-Reads data/reviews.csv, uses Groq LLM calls (JSON mode) to discover themes,
-classify every review, rank themes, pick real quotes and analyse fee confusion.
+Reads data/reviews.csv (or the file named by the REVIEWS_CSV env var), uses
+Groq LLM calls (JSON mode) to discover themes, classify every review, rank
+themes, pick real quotes and analyse fee confusion.
 Results are written to outputs/insights.json and outputs/review_themes.csv.
 """
 
@@ -22,7 +23,7 @@ from groq import Groq
 # ---------------------------------------------------------------------------
 # CONFIG
 # ---------------------------------------------------------------------------
-INPUT_CSV = "data/reviews.csv"
+INPUT_CSV = "data/reviews.csv"      # REVIEWS_CSV env var overrides this
 OUT_DIR = "outputs"
 THEMES_CSV = "outputs/review_themes.csv"
 INSIGHTS_JSON = "outputs/insights.json"
@@ -816,9 +817,10 @@ def main():
     os.makedirs(OUT_DIR, exist_ok=True)
     os.makedirs(CACHE_DIR, exist_ok=True)
 
-    df = pd.read_csv(INPUT_CSV, encoding="utf-8", dtype={"text": str})
+    input_csv = os.getenv("REVIEWS_CSV") or INPUT_CSV
+    df = pd.read_csv(input_csv, encoding="utf-8", dtype={"text": str})
     ids, mapping = short_ids(df)
-    print(f"Loaded {len(df)} reviews from {INPUT_CSV}")
+    print(f"Loaded {len(df)} reviews from {input_csv}")
 
     # STAGE A - discover up to 5 themes with the big model.
     print("\nSTAGE A: discovering themes...")
