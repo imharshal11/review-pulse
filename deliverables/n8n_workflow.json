@@ -1,0 +1,148 @@
+{
+  "name": "Review Pulse — MCP Tools",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "115df41e-fa27-4b0a-9dd7-befff6e3152e"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 2.1,
+      "position": [
+        -32,
+        -32
+      ],
+      "id": "36008211-30a1-4a62-8023-6121b982c5f7",
+      "name": "MCP Server Trigger",
+      "webhookId": "115df41e-fa27-4b0a-9dd7-befff6e3152e"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Appends one approved weekly log entry to the Review Pulse Google Doc.",
+        "operation": "update",
+        "documentURL": "1YEpRWWPLN52DmpdBNt5To9o_uSjXRoVsvMhA3EZD2BY",
+        "actionsUi": {
+          "actionFields": [
+            {
+              "action": "insert",
+              "text": "={{ $fromAI('entry', 'The full approved log entry text to append to the document', 'string') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.googleDocsTool",
+      "typeVersion": 2,
+      "position": [
+        -112,
+        192
+      ],
+      "id": "4e876eae-7baf-49be-8860-22f844a11617",
+      "name": "append_to_doc",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "iDSgH9gbwQP1ZvdC",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Creates a Gmail DRAFT (never sends) containing the weekly pulse and fee explanation.",
+        "resource": "draft",
+        "subject": "={{ $fromAI('subject', 'Email subject line', 'string') }}",
+        "emailType": "html",
+        "message": "={{ $fromAI('body', 'Email body with the weekly pulse and the fee explanation snippet', 'string') }}",
+        "options": {
+          "sendTo": "hvsarowar@gmail.com "
+        }
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.2,
+      "position": [
+        320,
+        192
+      ],
+      "id": "1352b0c4-183d-456f-b44f-405c7588159c",
+      "name": "create_email_draft",
+      "webhookId": "c02f04d6-6232-45ec-867f-0c9695763f5a",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "cRE0zuYbchIJaeK0",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Reads the Review Pulse Google Doc (read-only) to verify entries and prevent duplicates.",
+        "operation": "get",
+        "documentURL": "1YEpRWWPLN52DmpdBNt5To9o_uSjXRoVsvMhA3EZD2BY"
+      },
+      "type": "n8n-nodes-base.googleDocsTool",
+      "typeVersion": 2,
+      "position": [
+        112,
+        192
+      ],
+      "id": "fee60464-107a-4b3b-8b07-619d7996e4cc",
+      "name": "read_doc",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "iDSgH9gbwQP1ZvdC",
+          "name": "Google Docs account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "append_to_doc": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "create_email_draft": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "read_doc": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "48598516-5c1b-4ce9-b4af-b69546f13baf",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "87d67eff44170dc712db0af9096c70f1bd3270be78dbcb2790208e99223fa56b"
+  },
+  "nodeGroups": [],
+  "id": "GyeCYvRpoYAOKcT8",
+  "tags": []
+}
