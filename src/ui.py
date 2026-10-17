@@ -371,9 +371,19 @@ def data_funnel() -> list[tuple[str, str, str]]:
             weeks = len({r.get("week_start", "") for r in csv.DictReader(f)})
     except Exception:
         pass
+
+    # When the raw CSV is not shipped (hosted app), fall back to saved counts.
+    stats = load_json(OUT / "data_stats.json") or {}
+    collected = stats.get("collected")
+    if cleaned is None:
+        cleaned = stats.get("cleaned")
+    if analysed is None:
+        analysed = stats.get("analysed")
+
     out = []
+    if collected:
+        out.append(("Collected from the store", fmt_int(collected), "newest first, until 12 weeks old"))
     if cleaned:
-        out.append(("Collected from the store", "12,800", "newest first, until 12 weeks old"))
         out.append(("After cleaning", fmt_int(cleaned), "blank, very short and duplicate reviews removed"))
     out.append(("Analysed", fmt_int(analysed or ins.get("total_reviews")), f"balanced sample · up to 200 per week · {weeks} weeks"))
     fi = ins.get("fee_issue") or {}
