@@ -1,0 +1,348 @@
+{
+  "generated_on": "2026-10-16",
+  "period_start": "2026-07-21",
+  "period_end": "2026-10-11",
+  "total_reviews": 2358,
+  "themes": [
+    {
+      "name": "App Performance",
+      "description": "Users report crashes, lag, hanging, slow loading, and connectivity issues affecting trading reliability.",
+      "count": 373,
+      "share_pct": 15.8,
+      "avg_rating": 2.13,
+      "problem_count": 254,
+      "problem_rate": 68.1,
+      "weekly_counts": {
+        "2026-07-20": 29,
+        "2026-07-27": 23,
+        "2026-08-03": 41,
+        "2026-08-10": 36,
+        "2026-08-17": 36,
+        "2026-08-24": 18,
+        "2026-08-31": 21,
+        "2026-09-07": 31,
+        "2026-09-14": 31,
+        "2026-09-21": 38,
+        "2026-09-28": 24,
+        "2026-10-05": 45
+      },
+      "trend": {
+        "direction": "up",
+        "last_4_weeks": 95,
+        "previous_4_weeks": 65,
+        "delta": 30
+      }
+    },
+    {
+      "name": "Fees and Brokerage",
+      "description": "Many reviews complain about high brokerage, hidden charges, and requests for lower fees.",
+      "count": 193,
+      "share_pct": 8.2,
+      "avg_rating": 2.55,
+      "problem_count": 107,
+      "problem_rate": 55.4,
+      "weekly_counts": {
+        "2026-07-20": 21,
+        "2026-07-27": 11,
+        "2026-08-03": 22,
+        "2026-08-10": 17,
+        "2026-08-17": 15,
+        "2026-08-24": 16,
+        "2026-08-31": 14,
+        "2026-09-07": 12,
+        "2026-09-14": 20,
+        "2026-09-21": 10,
+        "2026-09-28": 17,
+        "2026-10-05": 18
+      },
+      "trend": {
+        "direction": "up",
+        "last_4_weeks": 34,
+        "previous_4_weeks": 29,
+        "delta": 5
+      }
+    },
+    {
+      "name": "Feature Gaps",
+      "description": "Requests for missing functionalities such as multi‑chart view, trailing stop‑loss, IPO workflow, chart saving, and mutual‑fund cart access.",
+      "count": 317,
+      "share_pct": 13.4,
+      "avg_rating": 3.25,
+      "problem_count": 107,
+      "problem_rate": 33.8,
+      "weekly_counts": {
+        "2026-07-20": 25,
+        "2026-07-27": 20,
+        "2026-08-03": 21,
+        "2026-08-10": 33,
+        "2026-08-17": 27,
+        "2026-08-24": 37,
+        "2026-08-31": 27,
+        "2026-09-07": 26,
+        "2026-09-14": 23,
+        "2026-09-21": 22,
+        "2026-09-28": 34,
+        "2026-10-05": 22
+      }
+    },
+    {
+      "name": "Customer Support & Trust",
+      "description": "Concerns about poor support response, alleged fraud, data privacy, and trustworthiness of the platform.",
+      "count": 364,
+      "share_pct": 15.4,
+      "avg_rating": 1.74,
+      "problem_count": 291,
+      "problem_rate": 79.9,
+      "weekly_counts": {
+        "2026-07-20": 24,
+        "2026-07-27": 28,
+        "2026-08-03": 27,
+        "2026-08-10": 31,
+        "2026-08-17": 21,
+        "2026-08-24": 27,
+        "2026-08-31": 29,
+        "2026-09-07": 34,
+        "2026-09-14": 45,
+        "2026-09-21": 42,
+        "2026-09-28": 23,
+        "2026-10-05": 33
+      },
+      "trend": {
+        "direction": "up",
+        "last_4_weeks": 111,
+        "previous_4_weeks": 90,
+        "delta": 21
+      }
+    },
+    {
+      "name": "User Interface & Experience",
+      "description": "Feedback on the app’s usability, design, tablet/iPad optimization, and overall user‑friendly experience.",
+      "count": 1111,
+      "share_pct": 47.1,
+      "avg_rating": 4.62,
+      "problem_count": 74,
+      "problem_rate": 6.7,
+      "weekly_counts": {
+        "2026-07-20": 65,
+        "2026-07-27": 118,
+        "2026-08-03": 89,
+        "2026-08-10": 83,
+        "2026-08-17": 101,
+        "2026-08-24": 102,
+        "2026-08-31": 109,
+        "2026-09-07": 97,
+        "2026-09-14": 81,
+        "2026-09-21": 88,
+        "2026-09-28": 96,
+        "2026-10-05": 82
+      }
+    }
+  ],
+  "themes_by_volume": [
+    {
+      "name": "User Interface & Experience",
+      "description": "Feedback on the app’s usability, design, tablet/iPad optimization, and overall user‑friendly experience.",
+      "count": 1111,
+      "share_pct": 47.1,
+      "avg_rating": 4.62,
+      "problem_count": 74,
+      "problem_rate": 6.7,
+      "weekly_counts": {
+        "2026-07-20": 65,
+        "2026-07-27": 118,
+        "2026-08-03": 89,
+        "2026-08-10": 83,
+        "2026-08-17": 101,
+        "2026-08-24": 102,
+        "2026-08-31": 109,
+        "2026-09-07": 97,
+        "2026-09-14": 81,
+        "2026-09-21": 88,
+        "2026-09-28": 96,
+        "2026-10-05": 82
+      }
+    },
+    {
+      "name": "App Performance",
+      "description": "Users report crashes, lag, hanging, slow loading, and connectivity issues affecting trading reliability.",
+      "count": 373,
+      "share_pct": 15.8,
+      "avg_rating": 2.13,
+      "problem_count": 254,
+      "problem_rate": 68.1,
+      "weekly_counts": {
+        "2026-07-20": 29,
+        "2026-07-27": 23,
+        "2026-08-03": 41,
+        "2026-08-10": 36,
+        "2026-08-17": 36,
+        "2026-08-24": 18,
+        "2026-08-31": 21,
+        "2026-09-07": 31,
+        "2026-09-14": 31,
+        "2026-09-21": 38,
+        "2026-09-28": 24,
+        "2026-10-05": 45
+      },
+      "trend": {
+        "direction": "up",
+        "last_4_weeks": 95,
+        "previous_4_weeks": 65,
+        "delta": 30
+      }
+    },
+    {
+      "name": "Customer Support & Trust",
+      "description": "Concerns about poor support response, alleged fraud, data privacy, and trustworthiness of the platform.",
+      "count": 364,
+      "share_pct": 15.4,
+      "avg_rating": 1.74,
+      "problem_count": 291,
+      "problem_rate": 79.9,
+      "weekly_counts": {
+        "2026-07-20": 24,
+        "2026-07-27": 28,
+        "2026-08-03": 27,
+        "2026-08-10": 31,
+        "2026-08-17": 21,
+        "2026-08-24": 27,
+        "2026-08-31": 29,
+        "2026-09-07": 34,
+        "2026-09-14": 45,
+        "2026-09-21": 42,
+        "2026-09-28": 23,
+        "2026-10-05": 33
+      },
+      "trend": {
+        "direction": "up",
+        "last_4_weeks": 111,
+        "previous_4_weeks": 90,
+        "delta": 21
+      }
+    },
+    {
+      "name": "Feature Gaps",
+      "description": "Requests for missing functionalities such as multi‑chart view, trailing stop‑loss, IPO workflow, chart saving, and mutual‑fund cart access.",
+      "count": 317,
+      "share_pct": 13.4,
+      "avg_rating": 3.25,
+      "problem_count": 107,
+      "problem_rate": 33.8,
+      "weekly_counts": {
+        "2026-07-20": 25,
+        "2026-07-27": 20,
+        "2026-08-03": 21,
+        "2026-08-10": 33,
+        "2026-08-17": 27,
+        "2026-08-24": 37,
+        "2026-08-31": 27,
+        "2026-09-07": 26,
+        "2026-09-14": 23,
+        "2026-09-21": 22,
+        "2026-09-28": 34,
+        "2026-10-05": 22
+      }
+    },
+    {
+      "name": "Fees and Brokerage",
+      "description": "Many reviews complain about high brokerage, hidden charges, and requests for lower fees.",
+      "count": 193,
+      "share_pct": 8.2,
+      "avg_rating": 2.55,
+      "problem_count": 107,
+      "problem_rate": 55.4,
+      "weekly_counts": {
+        "2026-07-20": 21,
+        "2026-07-27": 11,
+        "2026-08-03": 22,
+        "2026-08-10": 17,
+        "2026-08-17": 15,
+        "2026-08-24": 16,
+        "2026-08-31": 14,
+        "2026-09-07": 12,
+        "2026-09-14": 20,
+        "2026-09-21": 10,
+        "2026-09-28": 17,
+        "2026-10-05": 18
+      },
+      "trend": {
+        "direction": "up",
+        "last_4_weeks": 34,
+        "previous_4_weeks": 29,
+        "delta": 5
+      }
+    }
+  ],
+  "top_themes": [
+    "Customer Support & Trust",
+    "App Performance",
+    "Fees and Brokerage"
+  ],
+  "ranking_rule": "Top 3 themes ranked by number of 1-2 star reviews (problem volume); ties broken by higher problem rate.",
+  "quotes": [
+    {
+      "theme": "Customer Support & Trust",
+      "review_id": "e98bd870-463a-48d4-9744-ee60f69bb9ac",
+      "rating": 1,
+      "date": "2026-08-10",
+      "text": "This is a terrible app with equally terrible customer support. I've attempted to contact them through both messages and calls, but all interactions are automated with no genuine human connection or assistance. I'm going to uninstall this app immediately."
+    },
+    {
+      "theme": "App Performance",
+      "review_id": "83badca7-3a1c-456a-ad85-90adb6c12b2f",
+      "rating": 1,
+      "date": "2026-07-30",
+      "text": "Fix the bugs, the nifty prices are shown different in different time frames and lots of lagging like 15-20 second I have to wait every time for loading the charts for last month after the recent update... so team Groww please fix these problems. thank you"
+    },
+    {
+      "theme": "Fees and Brokerage",
+      "review_id": "31ea5339-8292-468b-9d1c-1821a28c980c",
+      "rating": 2,
+      "date": "2026-08-03",
+      "text": "overall good but too many charges 😔 1 buy + sell order (fno) cause me 92. brokerage 40 and external charges 50😅."
+    }
+  ],
+  "fee_issue": {
+    "fee_name": "Hidden charges",
+    "what_users_think": "Users believe the app deducts various fees without clear disclosure or prior notice, making the service feel misleading and unfair.",
+    "what_confuses_them": "They are unsure which actions trigger charges such as DDPI activation, haircut fees on leveraged stocks, brokerage, SIP bounce, or tax deductions, and the UI does not clearly indicate when or why these amounts are taken.",
+    "confusion_patterns": [
+      "other charges seen as hidden (taxes, DP, exchange)",
+      "unexpected deduction or charge on failed or cancelled order",
+      "other confusion"
+    ],
+    "mention_count": 14,
+    "fee_reviews_total": 215,
+    "stance_counts": {
+      "confused": 14,
+      "complaint_only": 175,
+      "praise": 13,
+      "unrelated": 13
+    },
+    "pattern_counts": {
+      "other charges seen as hidden (taxes, DP, exchange)": 7,
+      "other confusion": 5,
+      "unexpected deduction or charge on failed or cancelled order": 2
+    },
+    "examples": [
+      {
+        "review_id": "9c2eef97-7615-46f2-abc8-8f06578afbea",
+        "rating": 1,
+        "date": "2026-08-24",
+        "text": "another 1 star, have applied for multiple IPOs but haven't received for upi request for any of those from last 3 hours this app silently deducting brokerage charge even if the transaction is unsuccessful. people need to pay attention on this. why it forcefully asking to approve autopay if I don't want to, for sip installments?"
+      },
+      {
+        "review_id": "24308ff1-6426-4726-922b-256fc209e939",
+        "rating": 1,
+        "date": "2026-08-12",
+        "text": "MTF is a scam! They will keep changing the haircut charges on leveraged stocks and there is no clarity on the UI which stocks are deducting hair cut charges. makes it impossible to plan and their customer support has not been helpful. Customer support on chat has been giving me the same answer and then immediately disconnecting."
+      },
+      {
+        "review_id": "f6823e41-a5b6-4d1b-b483-dd1d7c820913",
+        "rating": 1,
+        "date": "2026-08-27",
+        "text": "why AI feature GR-1 ruled out not able to see the option now. Not sur about the charges also"
+      }
+    ]
+  }
+}

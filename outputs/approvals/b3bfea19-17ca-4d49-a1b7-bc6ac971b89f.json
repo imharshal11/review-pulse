@@ -1,0 +1,84 @@
+{
+  "approval_id": "b3bfea19-17ca-4d49-a1b7-bc6ac971b89f",
+  "approved_at": "2026-10-16T00:33:13+05:30",
+  "payload_sha256": "c042b527e55cd0cf3855c1c8f1bac63396d9b7d28754272a4ea214660ec36b46",
+  "week_label": "11 Oct 2026",
+  "payloads": {
+    "week_label": "11 Oct 2026",
+    "date": "2026-10-16",
+    "top_themes": [
+      "Customer Support & Trust",
+      "App Performance",
+      "Fees and Brokerage"
+    ],
+    "weekly_pulse": "GROWW WEEKLY PRODUCT PULSE — WEEK ENDING 11 OCT 2026\nBased on 2,358 Play Store reviews, 2026-07-21 to 2026-10-11.\n\nTOP THEMES\nTrend: 1–2★ reviews, previous 4 weeks → last 4 weeks.\n1. Customer Support & Trust — 291 complaints (↑ 90 → 111). Support feels fully automated, lacking human assistance, eroding trust and prompting uninstalls.\n2. App Performance — 254 complaints (↑ 65 → 95). App crashes and long lag, especially chart loading delays after recent update, hinder reliable trading.\n3. Fees and Brokerage — 107 complaints (↑ 29 → 34). Charges appear high and hidden, with unclear triggers, driving complaints about fee transparency.\n\nWHAT USERS SAY\n    \"…I've attempted to contact them through both messages and calls, but all interactions are automated with no genuine human connection or assistance…\" — 1★, Customer Support & Trust\n    \"…lots of lagging like 15-20 second I have to wait every time for loading the charts for last month…\" — 1★, App Performance\n    \"overall good but too many charges 😔 1 buy + sell order (fno) cause me 92. brokerage 40 and external charges 50😅\" — 2★, Fees and Brokerage\n\nKEY OBSERVATION\nComplaints are rising across support, performance, and fee clarity, with each area showing increasing negative sentiment over recent weeks.\n\nACTION IDEAS\n1. Provide live human agents for inquiries that currently receive only automated replies.\n2. Optimize chart rendering to eliminate long loading delays reported after the recent update.\n3. Clarify each charge trigger in the UI, explaining why fees are applied beyond brokerage.",
+    "identified_fee_issue": "Charges beyond brokerage seen as hidden — top confusion pattern: other charges seen as hidden (taxes, DP, exchange) (7 of 14 confused reviews); a further 175 reviews say charges are too high.",
+    "explanation_bullets": [
+      "Equity trades charge brokerage per executed order, the lower of ₹20 or 0.1% with a ₹5 minimum. Futures & Options charge ₹20 per executed order.",
+      "When you sell shares, a DP charge applies per transaction, consisting of the depository fee and Groww’s fee.",
+      "STT, stamp duty, exchange transaction charges, SEBI turnover charge and IPFT are regulatory/statutory charges levied by the exchange, not by Groww.",
+      "An 18% GST is added on brokerage, DP charges, exchange transaction charges, IPFT and SEBI turnover charges.",
+      "The overall trade cost includes brokerage plus DP, regulatory, statutory and GST charges, so it may exceed brokerage alone."
+    ],
+    "source_links": [
+      {
+        "title": "Groww — Stocks pricing",
+        "url": "https://groww.in/pricing/stocks"
+      },
+      {
+        "title": "Groww Help — How much does Groww charge for stocks?",
+        "url": "https://groww.in/help/stocks%2C-f%26o%2C-ipo-%26-mtf/sx-demat-account/how-much-does-groww-charge-for-stocks-1"
+      }
+    ],
+    "fee_title": "Why the total charge on a trade can be more than brokerage",
+    "last_checked": "2026-10-14",
+    "email_summary": {
+      "theme_lines": [
+        "Support feels like a robot, users want real people",
+        "App crashes and slow charts make trading unreliable",
+        "Fees look high and hidden, users don’t understand them"
+      ],
+      "key_point": "Complaints are rising across support, performance, and fee clarity",
+      "actions": [
+        "Add live human agents for questions now answered by bots",
+        "Fix chart loading so it’s fast and doesn’t freeze",
+        "Explain every fee in the app so users know why charged"
+      ]
+    },
+    "doc_entry_body": "===== Review Pulse entry — week ending 11 Oct 2026 =====\n\nDATE:\n2026-10-16\n\nTOP THEMES:\nCustomer Support & Trust, App Performance, Fees and Brokerage\n\nWEEKLY PULSE:\nGROWW WEEKLY PRODUCT PULSE — WEEK ENDING 11 OCT 2026\nBased on 2,358 Play Store reviews, 2026-07-21 to 2026-10-11.\n\nTOP THEMES\nTrend: 1–2★ reviews, previous 4 weeks → last 4 weeks.\n1. Customer Support & Trust — 291 complaints (↑ 90 → 111). Support feels fully automated, lacking human assistance, eroding trust and prompting uninstalls.\n2. App Performance — 254 complaints (↑ 65 → 95). App crashes and long lag, especially chart loading delays after recent update, hinder reliable trading.\n3. Fees and Brokerage — 107 complaints (↑ 29 → 34). Charges appear high and hidden, with unclear triggers, driving complaints about fee transparency.\n\nWHAT USERS SAY\n    \"…I've attempted to contact them through both messages and calls, but all interactions are automated with no genuine human connection or assistance…\" — 1★, Customer Support & Trust\n    \"…lots of lagging like 15-20 second I have to wait every time for loading the charts for last month…\" — 1★, App Performance\n    \"overall good but too many charges 😔 1 buy + sell order (fno) cause me 92. brokerage 40 and external charges 50😅\" — 2★, Fees and Brokerage\n\nKEY OBSERVATION\nComplaints are rising across support, performance, and fee clarity, with each area showing increasing negative sentiment over recent weeks.\n\nACTION IDEAS\n1. Provide live human agents for inquiries that currently receive only automated replies.\n2. Optimize chart rendering to eliminate long loading delays reported after the recent update.\n3. Clarify each charge trigger in the UI, explaining why fees are applied beyond brokerage.\n\nIDENTIFIED FEE ISSUE:\nCharges beyond brokerage seen as hidden — top confusion pattern: other charges seen as hidden (taxes, DP, exchange) (7 of 14 confused reviews); a further 175 reviews say charges are too high.\n\nEXPLANATION BULLETS:\n- Equity trades charge brokerage per executed order, the lower of ₹20 or 0.1% with a ₹5 minimum. Futures & Options charge ₹20 per executed order.\n- When you sell shares, a DP charge applies per transaction, consisting of the depository fee and Groww’s fee.\n- STT, stamp duty, exchange transaction charges, SEBI turnover charge and IPFT are regulatory/statutory charges levied by the exchange, not by Groww.\n- An 18% GST is added on brokerage, DP charges, exchange transaction charges, IPFT and SEBI turnover charges.\n- The overall trade cost includes brokerage plus DP, regulatory, statutory and GST charges, so it may exceed brokerage alone.\n\nSOURCE LINKS:\nGroww — Stocks pricing — https://groww.in/pricing/stocks\nGroww Help — How much does Groww charge for stocks? — https://groww.in/help/stocks%2C-f%26o%2C-ipo-%26-mtf/sx-demat-account/how-much-does-groww-charge-for-stocks-1\n\nLAST CHECKED:\n2026-10-14\n\nAPPROVAL:\n===== end of entry =====\n",
+    "email_subject": "Weekly Product Pulse + Customer Clarification — 11 Oct 2026",
+    "email_body_body": "<div style=\"max-width:640px;margin:0 auto;font-family:Arial, sans-serif;font-size:14px;color:#1f2937;line-height:1.5;\"><p style=\"font-size:20px;font-weight:bold;margin:0 0 4px 0;\">Weekly Product Pulse</p><p style=\"color:#6b7280;font-size:13px;margin:0;\">Groww · week ending 11 Oct 2026 · 2,358 Play Store reviews (21 Jul – 11 Oct 2026)</p><hr style=\"border:none;border-top:1px solid #e5e7eb;margin:12px 0 16px 0;\"><p style=\"margin:0 0 12px 0;\">Hi team,</p><p style=\"font-size:16px;font-weight:bold;margin:16px 0 4px 0;\">Top 3 issues</p><p style=\"color:#6b7280;font-size:13px;margin:0 0 4px 0;\">1–2★ reviews: previous 4 weeks → last 4 weeks</p><div style=\"background:#f9fafb;border-left:4px solid #2563eb;padding:10px 14px;margin:8px 0;\"><table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td style=\"font-weight:bold;\">1. Customer support</td><td align=\"right\" style=\"color:#6b7280;\">291 complaints · rising (90 → 111)</td></tr><tr><td colspan=\"2\" style=\"padding-top:4px;\">Support feels like a robot, users want real people</td></tr></table></div><div style=\"background:#f9fafb;border-left:4px solid #f59e0b;padding:10px 14px;margin:8px 0;\"><table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td style=\"font-weight:bold;\">2. App performance</td><td align=\"right\" style=\"color:#6b7280;\">254 complaints · rising (65 → 95)</td></tr><tr><td colspan=\"2\" style=\"padding-top:4px;\">App crashes and slow charts make trading unreliable</td></tr></table></div><div style=\"background:#f9fafb;border-left:4px solid #dc2626;padding:10px 14px;margin:8px 0;\"><table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td style=\"font-weight:bold;\">3. Fees and brokerage</td><td align=\"right\" style=\"color:#6b7280;\">107 complaints · rising (29 → 34)</td></tr><tr><td colspan=\"2\" style=\"padding-top:4px;\">Fees look high and hidden, users don’t understand them</td></tr></table></div><p style=\"font-size:16px;font-weight:bold;margin:16px 0 4px 0;\">What users say</p><div style=\"border-left:3px solid #9ca3af;padding-left:10px;margin:8px 0;font-style:italic;\">I&#x27;ve attempted to contact them through both messages and calls, but all interactions are automated with no genuine human connection or assistance<div style=\"font-style:normal;color:#6b7280;font-size:12px;margin-top:4px;\">— 1★ · Customer support</div></div><div style=\"border-left:3px solid #9ca3af;padding-left:10px;margin:8px 0;font-style:italic;\">lots of lagging like 15-20 second I have to wait every time for loading the charts for last month<div style=\"font-style:normal;color:#6b7280;font-size:12px;margin-top:4px;\">— 1★ · App performance</div></div><div style=\"border-left:3px solid #9ca3af;padding-left:10px;margin:8px 0;font-style:italic;\">overall good but too many charges 😔 1 buy + sell order (fno) cause me 92. brokerage 40 and external charges 50😅<div style=\"font-style:normal;color:#6b7280;font-size:12px;margin-top:4px;\">— 2★ · Fees and brokerage</div></div><p style=\"font-size:16px;font-weight:bold;margin:16px 0 4px 0;\">Key point</p><p style=\"margin:0 0 8px 0;\">Complaints are rising across support, performance, and fee clarity</p><p style=\"font-size:16px;font-weight:bold;margin:16px 0 4px 0;\">Suggested actions</p><ol style=\"margin:0 0 8px 20px;padding:0;\"><li>Add live human agents for questions now answered by bots</li><li>Fix chart loading so it’s fast and doesn’t freeze</li><li>Explain every fee in the app so users know why charged</li></ol><p style=\"font-size:16px;font-weight:bold;margin:16px 0 8px 0;\">Support snippet (ready to send to users)</p><div style=\"border:1px solid #e5e7eb;border-radius:8px;padding:14px;background:#ffffff;margin:0 0 8px 0;\"><p style=\"font-weight:bold;margin:0 0 8px 0;\">Why is my total charge more than brokerage?</p><ul style=\"margin:0 0 4px 0;padding-left:18px;\"><li>Equity trades charge brokerage per executed order, the lower of ₹20 or 0.1% with a ₹5 minimum. Futures &amp; Options charge ₹20 per executed order.</li><li>When you sell shares, a DP charge applies per transaction, consisting of the depository fee and Groww’s fee.</li><li>STT, stamp duty, exchange transaction charges, SEBI turnover charge and IPFT are regulatory/statutory charges levied by the exchange, not by Groww.</li><li>An 18% GST is added on brokerage, DP charges, exchange transaction charges, IPFT and SEBI turnover charges.</li><li>The overall trade cost includes brokerage plus DP, regulatory, statutory and GST charges, so it may exceed brokerage alone.</li></ul><p style=\"margin:8px 0 2px 0;\">Sources:</p><ul style=\"margin:0;padding-left:18px;\"><li><a href=\"https://groww.in/pricing/stocks\" style=\"color:#2563eb;\">Groww — Stocks pricing</a></li><li><a href=\"https://groww.in/help/stocks%2C-f%26o%2C-ipo-%26-mtf/sx-demat-account/how-much-does-groww-charge-for-stocks-1\" style=\"color:#2563eb;\">Groww Help — How much does Groww charge for stocks?</a></li></ul><p style=\"color:#6b7280;font-size:12px;margin:8px 0 0 0;\">Last checked: 14 Oct 2026</p></div></div>"
+  },
+  "steps": {
+    "duplicate_check": {
+      "done": true,
+      "already_logged": false,
+      "new_entry": false,
+      "error": null
+    },
+    "hash_check": {
+      "done": true,
+      "recomputed": "c042b527e55cd0cf3855c1c8f1bac63396d9b7d28754272a4ea214660ec36b46"
+    },
+    "doc_append": {
+      "done": true,
+      "ok": true,
+      "skipped": false,
+      "result": "[{\"documentId\":\"1YEpRWWPLN52DmpdBNt5To9o_uSjXRoVsvMhA3EZD2BY\"}]",
+      "error": null
+    },
+    "read_back": {
+      "done": true,
+      "verified": true,
+      "error": null
+    },
+    "email_draft": {
+      "done": true,
+      "ok": true,
+      "draft_id": "r7874068791888667235",
+      "response": "[{\"id\":\"r7874068791888667235\",\"message\":{\"id\":\"1a140f378cf17cd9\",\"threadId\":\"1a140f378cf17cd9\",\"labelIds\":[\"DRAFT\"]}}]",
+      "error": null
+    }
+  },
+  "status": "published"
+}

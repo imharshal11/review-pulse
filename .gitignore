@@ -1,6 +1,11 @@
 venv/
 .env
 __pycache__/
-outputs/
-outputs/cache/
+.streamlit/secrets.toml
 data/reviews_raw.csv
+data/uploaded.csv
+
+# keep final outputs for the hosted demo, hide the working files
+outputs/cache/
+outputs/logs/
+outputs/email_preview.html

@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-16",
+  "top_themes": [
+    "Customer Support & Trust",
+    "App Performance",
+    "Fees and Brokerage"
+  ],
+  "weekly_pulse": "# Groww Weekly Product Pulse — Week ending 11 Oct 2026\nBased on 2358 Play Store reviews, 2026-07-21 to 2026-10-11.\n\n## Top themes\n_Trend: 1–2★ reviews, previous 4 weeks → last 4 weeks._\n1. **Customer Support & Trust** — 291 complaints (↑ 90 → 111). Support feels fully automated, lacking human assistance, eroding trust and prompting uninstalls.\n2. **App Performance** — 254 complaints (↑ 65 → 95). App crashes and long lag, especially chart loading delays after recent update, hinder reliable trading.\n3. **Fees and Brokerage** — 107 complaints (↑ 29 → 34). Charges appear high and hidden, with unclear triggers, driving complaints about fee transparency.\n\n## What users say\n> \"…I've attempted to contact them through both messages and calls, but all interactions are automated with no genuine human connection or assistance…\" — 1★, Customer Support & Trust\n> \"…lots of lagging like 15-20 second I have to wait every time for loading the charts for last month…\" — 1★, App Performance\n> \"overall good but too many charges 😔 1 buy + sell order (fno) cause me 92. brokerage 40 and external charges 50😅\" — 2★, Fees and Brokerage\n\n## Key observation\nComplaints are rising across support, performance, and fee clarity, with each area showing increasing negative sentiment over recent weeks.\n\n## Action ideas\n1. Provide live human agents for inquiries that currently receive only automated replies.\n2. Optimize chart rendering to eliminate long loading delays reported after the recent update.\n3. Clarify each charge trigger in the UI, explaining why fees are applied beyond brokerage.\n",
+  "word_count": 247,
+  "theme_insights": [
+    "Support feels fully automated, lacking human assistance, eroding trust and prompting uninstalls.",
+    "App crashes and long lag, especially chart loading delays after recent update, hinder reliable trading.",
+    "Charges appear high and hidden, with unclear triggers, driving complaints about fee transparency."
+  ],
+  "key_observation": "Complaints are rising across support, performance, and fee clarity, with each area showing increasing negative sentiment over recent weeks.",
+  "action_ideas": [
+    "Provide live human agents for inquiries that currently receive only automated replies.",
+    "Optimize chart rendering to eliminate long loading delays reported after the recent update.",
+    "Clarify each charge trigger in the UI, explaining why fees are applied beyond brokerage."
+  ],
+  "email_summary": {
+    "theme_lines": [
+      "Support feels like a robot, users want real people",
+      "App crashes and slow charts make trading unreliable",
+      "Fees look high and hidden, users don’t understand them"
+    ],
+    "key_point": "Complaints are rising across support, performance, and fee clarity",
+    "actions": [
+      "Add live human agents for questions now answered by bots",
+      "Fix chart loading so it’s fast and doesn’t freeze",
+      "Explain every fee in the app so users know why charged"
+    ]
+  },
+  "quotes": [
+    {
+      "excerpt": "…I've attempted to contact them through both messages and calls, but all interactions are automated with no genuine human connection or assistance…",
+      "text": "This is a terrible app with equally terrible customer support. I've attempted to contact them through both messages and calls, but all interactions are automated with no genuine human connection or assistance. I'm going to uninstall this app immediately.",
+      "review_id": "e98bd870-463a-48d4-9744-ee60f69bb9ac"
+    },
+    {
+      "excerpt": "…lots of lagging like 15-20 second I have to wait every time for loading the charts for last month…",
+      "text": "Fix the bugs, the nifty prices are shown different in different time frames and lots of lagging like 15-20 second I have to wait every time for loading the charts for last month after the recent update... so team Groww please fix these problems. thank you",
+      "review_id": "83badca7-3a1c-456a-ad85-90adb6c12b2f"
+    },
+    {
+      "excerpt": "overall good but too many charges 😔 1 buy + sell order (fno) cause me 92. brokerage 40 and external charges 50😅",
+      "text": "overall good but too many charges 😔 1 buy + sell order (fno) cause me 92. brokerage 40 and external charges 50😅.",
+      "review_id": "31ea5339-8292-468b-9d1c-1821a28c980c"
+    }
+  ]
+}

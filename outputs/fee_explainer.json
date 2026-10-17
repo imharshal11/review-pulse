@@ -1,0 +1,100 @@
+{
+  "identified_fee_issue": {
+    "fee_name": "Hidden charges",
+    "what_confuses_them": "They are unsure which actions trigger charges such as DDPI activation, haircut fees on leveraged stocks, brokerage, SIP bounce, or tax deductions, and the UI does not clearly indicate when or why these amounts are taken."
+  },
+  "explanation_bullets": [
+    {
+      "text": "Equity trades charge brokerage per executed order, the lower of ₹20 or 0.1% with a ₹5 minimum. Futures & Options charge ₹20 per executed order.",
+      "type": "fact",
+      "sources": [
+        "S1",
+        "S3",
+        "S2"
+      ]
+    },
+    {
+      "text": "When you sell shares, a DP charge applies per transaction, consisting of the depository fee and Groww’s fee.",
+      "type": "fact",
+      "sources": [
+        "S3",
+        "S1"
+      ]
+    },
+    {
+      "text": "STT, stamp duty, exchange transaction charges, SEBI turnover charge and IPFT are regulatory/statutory charges levied by the exchange, not by Groww.",
+      "type": "fact",
+      "sources": [
+        "S3",
+        "S1",
+        "S4"
+      ]
+    },
+    {
+      "text": "An 18% GST is added on brokerage, DP charges, exchange transaction charges, IPFT and SEBI turnover charges.",
+      "type": "fact",
+      "sources": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "text": "The overall trade cost includes brokerage plus DP, regulatory, statutory and GST charges, so it may exceed brokerage alone.",
+      "type": "summary",
+      "sources": []
+    }
+  ],
+  "source_links": [
+    {
+      "title": "Groww — Stocks pricing",
+      "url": "https://groww.in/pricing/stocks"
+    },
+    {
+      "title": "Groww Help — How much does Groww charge for stocks?",
+      "url": "https://groww.in/help/stocks%2C-f%26o%2C-ipo-%26-mtf/sx-demat-account/how-much-does-groww-charge-for-stocks-1"
+    }
+  ],
+  "fact_check": {
+    "summary": {
+      "supported": 4,
+      "not_supported": 0,
+      "unverified": 0,
+      "summary_bullets": 1
+    },
+    "bullets": [
+      {
+        "bullet": "Equity trades charge brokerage per executed order, the lower of ₹20 or 0.1% with a ₹5 minimum. Futures & Options charge ₹20 per executed order.",
+        "status": "supported",
+        "reason": "Both equity brokerage (lower of ₹20 or 0.1% with ₹5 minimum) and Futures & Options brokerage (₹20 per executed order) are explicitly stated in the source chunks.",
+        "needs_human_review": false
+      },
+      {
+        "bullet": "When you sell shares, a DP charge applies per transaction, consisting of the depository fee and Groww’s fee.",
+        "status": "supported",
+        "reason": "The source explicitly states that a DP charge applies each time you sell shares on Groww and that it includes both the depository’s charge and Groww’s fee.",
+        "needs_human_review": false
+      },
+      {
+        "bullet": "STT, stamp duty, exchange transaction charges, SEBI turnover charge and IPFT are regulatory/statutory charges levied by the exchange, not by Groww.",
+        "status": "supported",
+        "reason": "The source lists STT, stamp duty, exchange transaction charges, and SEBI turnover charge under regulatory/statutory charges and states such fees are levied by the exchange, not Groww; IPFT is also described as a charge contributed to the exchange.",
+        "needs_human_review": false
+      },
+      {
+        "bullet": "An 18% GST is added on brokerage, DP charges, exchange transaction charges, IPFT and SEBI turnover charges.",
+        "status": "supported",
+        "reason": "The source chunks explicitly state that a 18% GST applies to brokerage, DP charges, exchange transaction charges, IPFT and SEBI turnover charges.",
+        "needs_human_review": false
+      },
+      {
+        "bullet": "The overall trade cost includes brokerage plus DP, regulatory, statutory and GST charges, so it may exceed brokerage alone.",
+        "status": "summary",
+        "reason": "summary (not fact-checked)",
+        "needs_human_review": false
+      }
+    ]
+  },
+  "needs_human_review": false,
+  "last_checked": "2026-10-14",
+  "all_sources": "# Sources\n\n| id | title | url | fetched_on |\n| --- | --- | --- | --- |\n| S1 | Groww — Stocks pricing | https://groww.in/pricing/stocks | 2026-10-14 |\n| S2 | Groww — Futures & Options pricing | https://915.groww.in/pricing | 2026-10-14 |\n| S3 | Groww Help — How much does Groww charge for stocks? | https://groww.in/help/stocks%2C-f%26o%2C-ipo-%26-mtf/sx-demat-account/how-much-does-groww-charge-for-stocks-1 | 2026-10-14 |\n| S4 | NSE circular NSE/FA/73061 — Revision in Transaction Charges (27 Feb 2026) | https://nsearchives.nseindia.com/content/circulars/FA73061.pdf | 2026-10-14 |\n"
+}
