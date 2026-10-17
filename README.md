@@ -137,24 +137,41 @@ All three problem areas are rising. App performance is rising fastest.
 
 ## 5. How it works
 
+```mermaid
+flowchart TD
+    A[("Reviews CSV<br/>8–12 weeks")] --> B["Intake check<br/><i>privacy + format</i>"]
+    B --> C["Find themes<br/><i>AI</i>"]
+    C --> D["Count &amp; rank<br/><i>code</i>"]
+    D --> E["Weekly pulse<br/><i>≤250 words</i>"]
+    C --> F["Fee confusion<br/><i>AI labels, code counts</i>"]
+    F --> G["Fee explainer<br/><i>RAG + AI judge</i>"]
+
+    E --> H{{"HUMAN APPROVAL<br/>approve or reject"}}
+    G --> H
+
+    H -->|rejected| X["Nothing published<br/><i>reason saved to History</i>"]
+    H -->|approved| I["MCP client<br/><i>n8n, Bearer token</i>"]
+
+    I --> J["append_to_doc<br/><i>Google Doc entry</i>"]
+    I --> K["read_doc<br/><i>read back to verify</i>"]
+    I --> L["create_email_draft<br/><i>Gmail draft, never sent</i>"]
+
+    classDef data fill:#EEEBFF,stroke:#5B4CDB,stroke-width:1px,color:#1B1A2E
+    classDef ai fill:#FFF6E0,stroke:#B07800,stroke-width:1px,color:#1B1A2E
+    classDef code fill:#E3F8F5,stroke:#12A08F,stroke-width:1px,color:#1B1A2E
+    classDef gate fill:#5B4CDB,stroke:#4A3CC4,stroke-width:2px,color:#FFFFFF
+    classDef stop fill:#FFF1EC,stroke:#E04F35,stroke-width:1px,color:#1B1A2E
+    classDef tool fill:#FFFFFF,stroke:#5E5B76,stroke-width:1px,color:#1B1A2E
+
+    class A,B data
+    class C,F,G ai
+    class D,E code
+    class H gate
+    class X stop
+    class I,J,K,L tool
 ```
- Reviews CSV  ──►  Intake check  ──►  Themes  ──►  Counting  ──►  Weekly pulse
- (8–12 weeks)      privacy + format    (AI)       (code)          (≤250 words)
-                                         │
-                                         └──►  Fee confusion  ──►  Fee explainer
-                                                                   (RAG + AI judge)
-                                                        │
-                                              ┌─────────┴─────────┐
-                                              │  HUMAN APPROVAL   │
-                                              │  approve / reject │
-                                              └─────────┬─────────┘
-                                                        │ only if approved
-                                              MCP (n8n) │
-                                   ┌────────────────────┼────────────────────┐
-                                   ▼                    ▼                    ▼
-                            append_to_doc           read_doc          create_email_draft
-                          (Google Doc entry)      (verify it)        (Gmail draft, never sent)
-```
+
+<sub>🟪 Data &nbsp;·&nbsp; 🟨 AI writes or labels &nbsp;·&nbsp; 🟩 Code counts and enforces limits &nbsp;·&nbsp; 🟦 Human gate &nbsp;·&nbsp; ⬜ MCP tools</sub>
 
 ### The six stages
 
@@ -462,6 +479,6 @@ Full report: [`outputs/eval_report.md`](outputs/eval_report.md)
 
 [LinkedIn](https://www.linkedin.com/in/imharshal11) · [GitHub](https://github.com/imharshal11)
 
-This project builds on Milestone 1, [Tathya](https://github.com/imharshal11/tathya-mf-faq-bot) — a facts-only mutual fund FAQ assistant. Tathya answers questions with verified facts; Kizuki listens to what users are struggling with and produces the answer before they ask.
+This project builds on Milestone 4, [Tathya](https://github.com/imharshal11/tathya-mf-faq-bot) — a facts-only mutual fund FAQ assistant. Tathya answers questions with verified facts; Kizuki listens to what users are struggling with and produces the answer before they ask.
 
 **Disclaimer:** an independent learning project, not affiliated with or endorsed by Groww. All review data is public. Fee information is quoted from official public pages and was last checked on the date shown in the explainer; always check the source for current charges.
