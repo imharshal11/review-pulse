@@ -355,6 +355,16 @@ Kizuki works with any app's review data for themes, quotes and the weekly pulse.
 | Eval report | [`outputs/eval_report.md`](outputs/eval_report.md) — 32/32 |
 | n8n workflow export | [`deliverables/n8n_workflow.json`](deliverables/) |
 
+### What it published
+
+<div align="center">
+<img src="deliverables/screenshots/doc_entry.png" alt="The entry appended to the Google Doc" width="840">
+<br><em>The Google Doc entry, written only after approval — all six required fields, plus the approval ID and the SHA-256 content hash</em>
+<br><br>
+<img src="deliverables/screenshots/gmail_draft.png" alt="The Gmail draft created after approval" width="840">
+<br><em>The Gmail <strong>draft</strong> — created, never sent. Kizuki has no tool that can send email</em>
+</div>
+
 ### The weekly pulse (247 / 250 words)
 
 > **Groww Weekly Product Pulse — Week ending 11 Oct 2026**
