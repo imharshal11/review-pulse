@@ -1,6 +1,8 @@
 <div align="center">
 
-<img src="assets/kizuki-wordmark.svg" alt="Kizuki" width="200">
+<img src="assets/kizuki-mark.png" alt="Kizuki logo" width="64">
+
+# Kizuki
 
 ### Turn app reviews into a weekly product pulse and a fact-checked support answer — published only after a human approves.
 
