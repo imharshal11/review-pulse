@@ -210,7 +210,10 @@ MCP (Model Context Protocol) is a standard way for an app to use external tools 
 
 <div align="center">
 <img src="deliverables/screenshots/n8n_workflow.png" alt="n8n MCP server with three tools" width="640">
-<br><em>n8n MCP Server Trigger exposing three tools</em>
+<br><em>The n8n MCP Server Trigger exposing three tools — append_to_doc, read_doc and create_email_draft</em>
+<br><br>
+<img src="deliverables/screenshots/n8n_execution.png" alt="A real MCP tool call recorded in n8n" width="760">
+<br><em>A real call recorded in n8n: the Python client invoked <code>create_email_draft</code> with the approved subject and body, and it succeeded in 40&nbsp;ms</em>
 </div>
 
 ### The three tools
