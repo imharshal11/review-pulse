@@ -52,6 +52,12 @@ with left:
             _html_frame(str(email_html), height=640, scrolling=True)
         else:
             st.text(str(email_html)[:4000])
+        links = [l for l in (fee.get("source_links") or []) if isinstance(l, dict) and l.get("url")]
+        if links:
+            st.caption("Sources in this email (links open normally in the real Gmail draft):")
+            cols = st.columns(len(links))
+            for col, l in zip(cols, links):
+                col.link_button(l.get("title", "Source"), l["url"], use_container_width=True)
     with st.container(border=True):
         st.caption("GOOGLE DOC ENTRY · REVIEW PULSE — WEEKLY LOG")
         st.code(str(doc_text)[:6000], language=None)
